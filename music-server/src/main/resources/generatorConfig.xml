@@ -5,7 +5,7 @@
 <generatorConfiguration>
 
   <!-- 本地数据库驱动程序jar包的全路径 -->
-  <classPathEntry location="/Users/hongweiyin/Documents/github-workspace/music-website/music-server/src/main/resources/mysql-connector-java-8.0.13.jar"/>
+  <classPathEntry location="/Users/neochen/IdeaProjects/myMusic/music-server/src/main/resources/mysql-connector-java-8.0.13.jar"/>
 
   <context id="context" targetRuntime="MyBatis3">
     <commentGenerator>
@@ -14,7 +14,7 @@
     </commentGenerator>
 
     <!-- 数据库的相关配置 -->
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/tp_music?serverTimezone=Asia/Shanghai&amp;nullCatalogMeansCurrent=true" userId="root" password="1026"/>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://119.91.194.14:3307/my_data?useSSL=false&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai" userId="neo" password="Qwer1234"/>
 
     <javaTypeResolver>
       <property name="forceBigDecimals" value="false"/>
@@ -37,15 +37,16 @@
     </javaClientGenerator>
 
     <!--相关表的配置 -->
-    <table tableName="admin" domainObjectName="Admin" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="collect" domainObjectName="Collect" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="comment" domainObjectName="Comment" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="consumer" domainObjectName="Consumer" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="list_song" domainObjectName="ListSong" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="rank_list" domainObjectName="RankList" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="singer" domainObjectName="Singer" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="song" domainObjectName="Song" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-    <table tableName="song_list" domainObjectName="SongList" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+<!--    <table tableName="admin" domainObjectName="Admin" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="collect" domainObjectName="Collect" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="comment" domainObjectName="Comment" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="consumer" domainObjectName="Consumer" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="list_song" domainObjectName="ListSong" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="rank_list" domainObjectName="RankList" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="singer" domainObjectName="Singer" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="song" domainObjectName="Song" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+<!--    <table tableName="song_list" domainObjectName="SongList" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
+        <table tableName="stock_price_record" domainObjectName="StockPriceRecord" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
 
   </context>
 </generatorConfiguration>

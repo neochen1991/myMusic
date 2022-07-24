@@ -1,8 +1,8 @@
 package com.example.yin.service.impl;
 
 import com.example.yin.dao.ListSongMapper;
-import com.example.yin.domain.ListSong;
 import com.example.yin.service.ListSongService;
+import com.example.yin.domain.ListSong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
 package com.example.yin.controller;
 
+import com.example.yin.service.impl.RankListServiceImpl;
 import com.example.yin.common.ErrorMessage;
 import com.example.yin.common.SuccessMessage;
 import com.example.yin.domain.RankList;
-import com.example.yin.service.impl.RankListServiceImpl;
 
 import org.apache.commons.lang3.ObjectUtils.Null;
 import org.springframework.beans.factory.annotation.Autowired;

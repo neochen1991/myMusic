@@ -17,6 +17,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 // 是否发送Cookie
                 .allowCredentials(true)
                 //暴露哪些头部信息
-                .exposedHeaders("*");
+                .exposedHeaders("*")
+                .allowedHeaders("Accept,Authorization,DNT,Content-Type,Referer,User-Agent");
     }
 }

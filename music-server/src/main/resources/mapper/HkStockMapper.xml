@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yin.dao.HkStockMapper">
+  <resultMap id="BaseResultMap" type="com.example.yin.crawler.StockDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="hk_code" jdbcType="VARCHAR" property="hkCode" />
+    <result column="stock_name" jdbcType="VARCHAR" property="stockName" />
+    <result column="stock_num" jdbcType="VARCHAR" property="stockNum" />
+    <result column="stock_percent" jdbcType="VARCHAR" property="stockPercent" />
+    <result column="stock_date" jdbcType="VARCHAR" property="stockDate" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, hk_code,stock_name,stock_num,stock_percent,stock_date,source,create_time,update_time
+  </sql>
+
+
+  <insert id="insert" parameterType="com.example.yin.crawler.StockDto">
+    insert into hk_stock (code, hk_code,stock_name,stock_num,stock_percent,stock_date,source,create_time)
+    values ( #{code,jdbcType=VARCHAR}, #{hkCode,jdbcType=VARCHAR},#{stockName,jdbcType=VARCHAR},
+    #{stockNum,jdbcType=VARCHAR} ,#{stockPercent,jdbcType=VARCHAR}, #{stockDate,jdbcType=VARCHAR},
+    #{source,jdbcType=VARCHAR} ,now())
+  </insert>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into hk_stock (code, hk_code,stock_name,stock_num,stock_percent,stock_date,source,create_time)
+    values
+    <foreach collection="list" separator="," item="item">
+      (#{item.code,jdbcType=VARCHAR}, #{item.hkCode,jdbcType=VARCHAR},#{item.stockName,jdbcType=VARCHAR},
+      #{item.stockNum,jdbcType=DECIMAL} ,#{item.stockPercent,jdbcType=VARCHAR}, #{item.stockDate,jdbcType=VARCHAR},
+      #{item.source,jdbcType=VARCHAR} ,now())
+    </foreach>
+  </insert>
+  <select id="selectListByPage"  resultMap="BaseResultMap">
+    select * from hk_stock where 1=1 and code is null
+    <if test="code != null">
+      and code = #{code,jdbcType=VARCHAR}
+    </if>
+    <if test="hkCode != null">
+      and hk_code = #{hkCode,jdbcType=VARCHAR}
+    </if>
+    <if test="stockName != null">
+      and stock_name = #{stockName,jdbcType=VARCHAR}
+    </if>
+    <if test="stockDate != null">
+      and stock_date = #{stockDate,jdbcType=VARCHAR}
+    </if>
+    <if test="source != null">
+      and source = #{source,jdbcType=VARCHAR}
+    </if>
+    order by stock_date
+    limit #{start,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectRelListByPage"  resultMap="BaseResultMap">
+    select * from hk_stock_rel where source is not null
+    limit #{start,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="selectByCode"  resultMap="BaseResultMap">
+    select * from hk_stock where code = #{code,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.yin.crawler.StockDto">
+    update admin
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateCode" parameterType="com.example.yin.domain.Admin">
+    update hk_stock_rel
+    set code = #{code,jdbcType=VARCHAR},
+    source = #{source,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectNullRelListByPage" resultMap="BaseResultMap">
+    select * from hk_stock_rel where code = ''
+    limit #{start,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
+</mapper>
